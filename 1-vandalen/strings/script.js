@@ -7,8 +7,25 @@ window.onload = function(){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
-
+	var stringOne = "";
+	if (str=== "")
+	{
+		throw new Error("Du måste skriva någonting :P")
+	}
+	for (var i = 0; i < str.length; i++)
+	{
+		if(str.charCodeAt(i) >= 65 && str.charCodeAt(i) < 90 || str.charCodeAt(i) >= 196 && str.charCodeAt(i) <= 214)
+		{
+			stringOne += str.charAt(i).toLowerCase();
+		}
+			else
+		{
+			stringOne += str.charAt(i).toUpperCase();	
+		}
+	}
+	str = stringOne;
+	str = str.split(/[aA]/g).join("#");
+	return str;
 
 
 
