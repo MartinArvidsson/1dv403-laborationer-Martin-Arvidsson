@@ -5,13 +5,41 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
-
-
-			// Din kod här.
-
-
-
-
+		var today = new Date();
+		var Birthday = new Date(date);
+		var Days = 0;
+		var MatchingYear = new Date();
+		var day = 0;
+		var month = 0;
+		var year = 0;
+		
+		Birthday.setFullYear(today.getFullYear());
+		
+		Days = (Birthday.getTime() - today.getTime())/(1000*60*60*24);
+		day = Birthday.getDate() - today.getDate();
+		month = Birthday.getMonth() - today.getMonth();
+		
+		if (date === "")
+		{
+			throw new Error("Fel, ange din födelsedag")
+		}
+			if ((Birthday.getTime() - today.getTime())/(1000*60*60*24) >= -1)
+			{
+				if (day === 0 && month === 0)
+				{
+					return 0;
+				}
+				if (day === 1 && month === 0)
+				{
+					return 1;
+				}
+				return Days;
+			}
+			else
+			{
+				MatchingYear.setFullYear(Birthday.getFullYear()-1);
+				return (Birthday.getTime() - MatchingYear.getTime())/(1000*60*60*24);
+			}
 	};
 	// ------------------------------------------------------------------------------
 
