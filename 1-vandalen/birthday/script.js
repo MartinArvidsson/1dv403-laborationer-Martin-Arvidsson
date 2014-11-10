@@ -5,7 +5,7 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
-		var today = new Date();
+		var today = new Date(); //Variablar
 		var Birthday = new Date(date);
 		var Days = 0;
 		var MatchingYear = new Date();
@@ -13,17 +13,17 @@ window.onload = function(){
 		var month = 0;
 		var year = 0;
 		
-		Birthday.setFullYear(today.getFullYear());
+		Birthday.setFullYear(today.getFullYear()); // sätter datumvariablen date till ett helt år
 		
-		Days = (Birthday.getTime() - today.getTime())/(1000*60*60*24);
-		day = Birthday.getDate() - today.getDate();
-		month = Birthday.getMonth() - today.getMonth();
+		Days = (Birthday.getTime() - today.getTime())/(1000*60*60*24); //1000millisek // 60 sec // 60min // 24hr
+		day = Birthday.getDate() - today.getDate(); //Dagens datum
+		month = Birthday.getMonth() - today.getMonth(); // Dagens månad
 		
-		if (date === "")
+		if (date === "") // om det inge finns ngt datum
 		{
-			throw new Error("Fel, ange din födelsedag")
+			throw new Error("Fel, ange din födelsedag") //Undantag
 		}
-			if ((Birthday.getTime() - today.getTime())/(1000*60*60*24) >= -1)
+			if ((Birthday.getTime() - today.getTime())/(1000*60*60*24) >= -1) 
 			{
 				if (day === 0 && month === 0)
 				{
