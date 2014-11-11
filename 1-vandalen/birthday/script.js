@@ -11,17 +11,16 @@ window.onload = function(){
 		var MatchingYear = new Date();
 		var day = 0;
 		var month = 0;
-		var year = 0;
 		
-		Birthday.setFullYear(today.getFullYear()); // sätter datumvariablen date till ett helt år
+		Birthday.setFullYear(today.getFullYear()); // sätter datumvariablen date till nuvarande år
 		
-		Days = (Birthday.getTime() - today.getTime())/(1000*60*60*24); //1000millisek // 60 sec // 60min // 24hr
+		Days = (Birthday.getTime() - today.getTime())/(1000*60*60*24); 
 		day = Birthday.getDate() - today.getDate(); //Dagens datum
 		month = Birthday.getMonth() - today.getMonth(); // Dagens månad
 		
 		if (date === "") // om det inge finns ngt datum
 		{
-			throw new Error("Fel, ange din födelsedag") //Undantag
+			throw new Error("Fel, ange din födelsedag"); //Undantag
 		}
 			if ((Birthday.getTime() - today.getTime())/(1000*60*60*24) >= -1) 
 			{
@@ -37,7 +36,7 @@ window.onload = function(){
 			}
 			else
 			{
-				MatchingYear.setFullYear(Birthday.getFullYear()-1);
+				MatchingYear.setFullYear(Birthday.getFullYear()+1);
 				return (Birthday.getTime() - MatchingYear.getTime())/(1000*60*60*24);
 			}
 	};

@@ -29,8 +29,8 @@ var makePerson = function(persArr){
     maxAge = Math.max.apply(Math, agesArray); //tar den högsta åldern ur agesArray och anger värdet till maxAge
     minAge = Math.min.apply(Math, agesArray); // tar den minsta åldern ur agesArray och anger värdet till minAge
     
-    averageAge = agesArray.reduce(function (a,b) { return a + b}); //Sätter averageAge till 
-    averageAge = averageAge / agesArray.length; //Sätter averageAge till  
+    averageAge = agesArray.reduce(function (a,b) { return a + b}); 
+    averageAge = averageAge / agesArray.length; 
     
     results = {minAge: minAge, maxAge: maxAge, averageAge: Math.round(averageAge), names: names};
     return results;

@@ -2,7 +2,7 @@
 
 window.onload = function(){
 	
-	var secret = Math.floor( Math.random() * 100)+1; // Detta tal behöver bytas ut mot ett slumpat tal.
+	var secret = Math.floor( Math.random() * 100)+1;
 	var guessesDone = 0; //Sätter antal gissningar till 0 för att man ska hålla koll på hur många gissingar som görs.
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
@@ -10,7 +10,7 @@ window.onload = function(){
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 			
 		// Plats för förändring.
-		if (isNaN(number) === false) //Så länge som man inte har gissat korrekt är den false
+		if (isNaN(number) === false) //Så länge som man inte har gissat korrekt är den false Check whether a number is an illegal number:
 		{
 			guessesDone +=1; // efter varje gissing + den antal gissningar man har gjort med +1
 			if (number < 0 || number > 100)
@@ -31,7 +31,7 @@ window.onload = function(){
 			}
 		else
 		{
-			return [false,"du har förmodligen inte använt ett tal, försök igen"];		
+			return [false,"du har inte använt ett tal, försök igen"];		
 		}
 		}
 		// Returnera exempelvis: 
