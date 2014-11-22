@@ -2,7 +2,11 @@
 var messageApp = {
     init:function()
     {
-        alert("I am an alert box!");
+        var mess = new Message("Test1",new Date());
+        alert (mess);
+        alert (mess.getText());
+        mess.setText("Text2");
+        alert(mess);
     }
 }
-window.onload = messageApp.init
+window.onload = messageApp.init;
