@@ -1,5 +1,7 @@
 "use strict";
 var messageApp = {
+    messages:[],-
+    messagesSent: 0,
     init:function()
     {
         var mess = new Message("Test1",new Date());
