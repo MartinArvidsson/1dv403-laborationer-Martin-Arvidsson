@@ -1,0 +1,55 @@
+#logotype
+{
+    text-align:center;
+    padding-top:25px;
+    padding-bottom:25px;
+}
+body
+{
+   width:40%;
+   margin-left:30%;
+   border:double 7px black; 
+}
+main
+{
+    background: linear-gradient(black,darkblue,white);
+    border:7px black;
+}
+#messagesarea
+{
+    overflow-y:scroll;
+    max-height:400px;
+    height:400px;
+    border:ridge 4px black;
+}
+textarea
+{
+   font-family:Verdana;
+    max-width:80%;
+    width:80%;
+    height:130px;
+    font-size:18px;
+    margin-bottom:1%;
+    
+}
+textarea
+{
+    background-color:White;
+    margin-right:5%;
+    margin-left:10%;
+}
+#messagesSent
+{
+   font-family:Verdana;
+   font-size:18px;
+   margin-left:10%;
+}
+#sendmessage
+{
+    width:25%;
+    font-size:25px;
+    margin-right:15%;
+    margin-top:-1%;
+    margin-left:66%;
+    margin-bottom:2%;
+}
