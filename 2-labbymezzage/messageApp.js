@@ -77,7 +77,7 @@ var messageApp = {
                 document.getElementById("messagesSent").innerHTML = "Antal skickade meddelanden är : "+messageApp.messagesSent;
             }
         };
-        Timesprite.Onclick = function(e)
+        Timesprite.onclick = function(e)
         {
             alert(messageApp.messages[input].getDate());
         };
