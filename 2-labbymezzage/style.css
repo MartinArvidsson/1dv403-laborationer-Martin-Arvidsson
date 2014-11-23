@@ -20,7 +20,7 @@ main
     overflow-y:scroll;
     max-height:400px;
     height:400px;
-    border:ridge 4px black;
+    border:solid 4px black;
 }
 textarea
 {
@@ -68,5 +68,12 @@ textarea
 {
     float:right;
     height:24px;
-    width:24;
+    width:24px;
+}
+#Textmeddelande
+{
+    border:solid 2px Black;
+    color:grey;
+    font-size:18px;
+    font-style:bold;
 }

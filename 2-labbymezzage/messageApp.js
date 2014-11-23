@@ -41,45 +41,46 @@ var messageApp = {
     },
     RenderMessage: function(input){
         var image = document.createElement("img");
-        var timeimage = document.createElement("img");
-        var timestamp = document.createElement("div");
-        timestamp.id = "Timestamp"
+        var Timesprite = document.createElement("img");
+        var Timestamp = document.createElement("div");
+        Timestamp.id = "Timestamp";
         var entry = document.createElement("section");
-        entry.id = "Timeandbutton"
+        entry.id = "Timeandbutton";
         
-        timestamp.innerHTML = messageApp.messages[input].getDateText();
-        img.classname="Deletesprite";
-        img.src = "DeleteSprite.png";
-        img.classname ="Timesprite";
-        img.src ="Clocksprite.png";
+        Timestamp.innerHTML = messageApp.messages[input].getDateText();
+        
+        image.classname="Deletesprite";
+        image.src = "Delete.png";
+        Timesprite.classname ="Timesprite";
+        Timesprite.src ="Clock.png";
 
         var Textmessage = document.createElement("p");
         Textmessage.id ="Textmeddelande";
         Textmessage.innerHTML = messageApp.messages[input].getHTMLText();
         
         Textmessage.appendChild(entry);
-        entry.appendChild(img);
+        entry.appendChild(image);
         entry.appendChild(Timesprite);
         entry.appendChild(Timestamp);
-        messagesarea.appendChild(text);
+        messagesarea.appendChild(Textmessage);
         
         var element = document.getElementById("messagesarea");
         element.scrollTop = element.scrollHeight;
         
-        img.onclick = function(e)
+        image.onclick = function(e)
         {
             if(confirm("Vill du radera detta?"))
             {
                 messageApp.messagesSent = messageApp.messagesSent -1;
                 messageApp.messages.splice(input, 1);
-                text.parentNode.removeChild(text);
+                Textmessage.parentNode.removeChild(Textmessage);
                 document.getElementById("messagesSent").innerHTML = "Antal skickade meddelanden är : "+messageApp.messagesSent;
             }
         };
         Timesprite.Onclick = function(e)
         {
             alert(messageApp.messages[input].getDate());
-        }
+        };
     }
 };
 window.onload = messageApp.init;
