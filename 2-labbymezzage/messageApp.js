@@ -72,7 +72,7 @@ var messageApp = {
             if(confirm("Vill du radera detta?"))
             {
                 messageApp.messagesSent = messageApp.messagesSent -1;
-                messageApp.messages.splice(input, 1);
+                //messageApp.messages.splice(input, 1);
                 Textmessage.parentNode.removeChild(Textmessage);
                 document.getElementById("messagesSent").innerHTML = "Antal skickade meddelanden är : "+messageApp.messagesSent;
             }
