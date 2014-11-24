@@ -72,8 +72,18 @@ textarea
 }
 #Textmeddelande
 {
-    border:solid 2px Black;
-    color:grey;
+    border-top:solid 2px Black;
+    border-bottom:solid 2px Black;
+    color:Black;
     font-size:18px;
     font-style:oblique;
+    background-color:white;
+}
+.Timesprite
+{
+    display:none;
+}
+.Deletesprite
+{
+    display:none;
 }
