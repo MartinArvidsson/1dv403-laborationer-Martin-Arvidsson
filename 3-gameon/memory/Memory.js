@@ -5,3 +5,4 @@ var memory{
     }
 }
 window.onload = memory.init;
+//Kommentar så jag kan pusha
