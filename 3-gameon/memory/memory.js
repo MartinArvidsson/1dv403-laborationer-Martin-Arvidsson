@@ -8,12 +8,14 @@ var memory = {
     guesses: 0,         //Antalet gissningar
     flipOrder: 0,       //Ordningen av hur man vänder sina spelbrickor.
     correctBricks: 0,   //Antal ggr man har gissat korrekt       
-    flippedImages: 0,
+    flippedBricks: 0,
     pairsOfBricks: 8,
+    canFlipBrick:true,
     ParentNode: null,   
     picOne: null,       
     picTwo: null,       
     cardArea: null,
+    check: true,
     
     init:function()
     {
@@ -58,19 +60,20 @@ var memory = {
         memory.cardArea.appendChild(Indextable);
     },
     flipBrick:function(img, picture){
-        if(memory.flippedImages === 2){
+        if(memory.flippedBricks === 2){
             memory.guesses += 1;
-            memory.flippedImages = 0;
+            memory.flippedBricks = 0;
+            memory.check = false;
         }
         img.src = picture;
         img.id = "faceUp"+memory.flipOrder;
         document.getElementById('faceUp'+memory.flipOrder).notActive = true;
         memory.flipOrder +=1;
-        if(memory.flippedImages === 0)
+        if(memory.flippedBricks === 0)
         {
             memory.picOne = img.src;
         }
-        if(memory.flippedImages === 1)
+        if(memory.flippedBricks === 1)
         {
             memory.picTwo = img.src;
             if(memory.picOne === memory.picTwo)
@@ -93,13 +96,16 @@ var memory = {
             }
             else
             {
+                memory.canFlipBrick = false;
                 setTimeout(memory.flipBack, 1000);
+                
             }
             memory.flipOrder = 0;
         }
     },
     
     flipBack:function(){
+        memory.canFlipBrick = true;
         document.getElementById('faceUp0').notActive = false;
         document.getElementById('faceUp1').notActive = false;
         document.getElementById("faceUp0").src="pics/0.png";
@@ -109,10 +115,10 @@ var memory = {
     }, 
     
     click:function(){
-        if(this.Indeximg.notActive === false)
+        if(this.Indeximg.notActive === false & memory.canFlipBrick === true)
         {
             memory.flipBrick(this.Indeximg,this.Indeximg.picture);
-            memory.flippedImages += 1;
+            memory.flippedBricks += 1;
         }
     },
 };
