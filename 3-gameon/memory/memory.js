@@ -1,7 +1,7 @@
 "use strict";
 
 var memory = {
-    RandomArray:[],     //En array där random.js sparas
+    RandomArray:[],     
     rows: 4,            //Antalet rader av spelrutor
     columns: 4,         //Antalet kolumner av spelrutor
     Imagecount: 0,      //variabel för vilken bild som ska skrivas ut.
@@ -15,7 +15,6 @@ var memory = {
     picOne: null,       
     picTwo: null,       
     cardArea: null,
-    check: true,
     
     init:function()
     {
@@ -37,11 +36,11 @@ var memory = {
                 var link = document.createElement("a"); //med en "a-tagg" innuti
                 var Indeximg = document.createElement("img"); // 
                 
-                link.picture = "pics/"+memory.RandomArray[memory.Imagecount]+".png"; //en bild läggs till
-                Indeximg.id ="Facedown"; //Bilden heter facedown då brickan inte är vänd och har (?) som bild.
+                link.picture = "pics/"+memory.RandomArray[memory.Imagecount]+".png"; 
+                Indeximg.id ="Facedown";
                 
                 Indeximg.src ="pics/0.png"; //Brickan som är nedåtvänd har bild 0 angiven = altså (?)
-                Indeximg.picture ="pics/"+memory.RandomArray[memory.Imagecount]+".png"; //Bilden som är gömd får nummer 1
+                Indeximg.picture ="pics/"+memory.RandomArray[memory.Imagecount]+".png";
                 Indeximg.notActive = false;
                 memory.Imagecount +=1;
                 
@@ -63,7 +62,6 @@ var memory = {
         if(memory.flippedBricks === 2){
             memory.guesses += 1;
             memory.flippedBricks = 0;
-            memory.check = false;
         }
         img.src = picture;
         img.id = "faceUp"+memory.flipOrder;
