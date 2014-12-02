@@ -8,8 +8,8 @@ var memory = {
     guesses: 0,         //Antalet gissningar
     flipOrder: 0,       //Ordningen av hur man vänder sina spelbrickor.
     correctBricks: 0,   //Antal ggr man har gissat korrekt       
-    flippedBricks: 0,
-    pairsOfBricks: 8,
+    flippedBricks: 0,   // brickor som är "aktiva"
+    pairsOfBricks: 8,   //totala antal par
     canFlipBrick:true,
     ParentNode: null,   
     picOne: null,       
@@ -22,7 +22,7 @@ var memory = {
         memory.RandomArray = RandomGenerator.getPictureArray(memory.rows, memory.columns);
         memory.renderCards();
     },
-    renderCards:function(){
+    renderCards:function(){ //Funktion fär att få ut "brickorna" på "spelbordet"
         memory.cardArea = document.getElementById("memoryBricks");
         var Indextable = document.createElement("table"); //Skapar table taggen inut i div taggen "memoryBricks"
         var i = 0;
@@ -59,7 +59,7 @@ var memory = {
         }
         memory.cardArea.appendChild(Indextable);
     },
-    flipBrick:function(img, picture){
+    flipBrick:function(img, picture){ //Funktion för att kolla vid vända brickor med vilket av kraven som dom stämmer med.
         if(memory.flippedBricks === 2){
             memory.guesses += 1;
             memory.flippedBricks = 0;
@@ -69,14 +69,14 @@ var memory = {
         img.id = "faceUp"+memory.flipOrder;
         document.getElementById('faceUp'+memory.flipOrder).notActive = true;
         memory.flipOrder +=1;
-        if(memory.flippedBricks === 0)
+        if(memory.flippedBricks === 0) //Första brickan
         {
             memory.picOne = img.src;
         }
-        if(memory.flippedBricks === 1)
+        if(memory.flippedBricks === 1) // Andra brickan
         {
             memory.picTwo = img.src;
-            if(memory.picOne === memory.picTwo)
+            if(memory.picOne === memory.picTwo) // Om första är = andra = Rätt!
             {
                 document.getElementById('faceUp0').notActive = true;
                 document.getElementById('faceUp1').notActive = true;
@@ -94,27 +94,37 @@ var memory = {
                     memory.cardArea.appendChild(text);
                 }
             }
-            else
+            else // Annars kör vänd tillbaka funktionen
             {
                 memory.canFlipBrick = false;
-                setTimeout(memory.flipBack, 1000);
-                
+                //setTimeout(memory.flipBack, 1000);
+                setTimeout(function(){
+                    memory.canFlipBrick = true; 
+                    document.getElementById('faceUp0').notActive = false;
+                    document.getElementById('faceUp1').notActive = false;
+                    document.getElementById("faceUp0").src="pics/0.png";
+                    document.getElementById("faceUp0").id="Facedown";
+                    document.getElementById("faceUp1").src="pics/0.png";
+                    document.getElementById("faceUp1").id="Facedown";
+                }, 1000)
             }
             memory.flipOrder = 0;
         }
     },
     
-    flipBack:function(){
-        memory.canFlipBrick = true;
+    // Hade en separat FLipback som anropades ifrån else, valde istället att flytta in funktionen i else istället för att anropa den.
+    
+    /*flipBack:function(){ 
+        memory.canFlipBrick = true; 
         document.getElementById('faceUp0').notActive = false;
         document.getElementById('faceUp1').notActive = false;
         document.getElementById("faceUp0").src="pics/0.png";
         document.getElementById("faceUp0").id="Facedown";
         document.getElementById("faceUp1").src="pics/0.png";
         document.getElementById("faceUp1").id="Facedown";
-    }, 
+    },*/
     
-    click:function(){
+    click:function(){ // Vad som ska hända när man trycker på 1 bricka
         if(this.Indeximg.notActive === false & memory.canFlipBrick === true)
         {
             memory.flipBrick(this.Indeximg,this.Indeximg.picture);

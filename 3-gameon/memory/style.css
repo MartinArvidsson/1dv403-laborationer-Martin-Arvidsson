@@ -26,7 +26,7 @@ table tr td a img{
     padding: 15px;
     border: 2px solid black;
     margin: 10px;
-    background-color:darkred;
+    background-color:grey;
 }
 
 table tr td a img:hover{
@@ -34,14 +34,14 @@ table tr td a img:hover{
     padding: 15px;
     border: 2px solid black;
     margin: 10px;
-    background-color:red; 
+    background-color:darkgrey; 
 }
 table tr td a img:active{
     width: 60px;
     padding: 15px;
     border: 2px solid black;
     margin: 10px;
-    background-color:orange; 
+    
 }
 img{
     width:30px;
