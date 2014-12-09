@@ -52,4 +52,14 @@ var Quiz ={
         
     },
     
+    questionAnswer: function(answer,url){
+        var XHRTwo = new XMLHttpRequest();
+        var i;
+        XHRTwo.onreadystatechange = function(){
+            if(XHRTwo.readyState === 4)
+            {
+                var 
+            }
+        }
+    }
 }
