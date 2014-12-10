@@ -7,40 +7,20 @@ var Quiz ={
     serverObject: null,
     
     
-    
     init:function(){
         var userInput = document.getElementById("svar");
         Quiz.renderQuestion("http://vhost3.lnu.se:20080/question/1");
         document.getElementById("Button").addEventListener("click", function(e){ //Trycker på knappen funkion
-            
-            if(userInput.value !== "")
-            {
+            e.preventDefault();
+
                 Quiz.answerQuestion(userInput.value, Quiz.serverObject.nextURL);
-            }
-            else
-            {
-                e.preventDefault();
-            }
+            
         });
         
-    userInput.addEventListener("keydown",function(e) { //Trycker enter funktion
-            
-            if(e.keycode === 13)
-            {
-                if(userInput.value !== "")
-                {
-                    Quiz.answerQuestion(userInput.value, Quiz.serverObject.nextURL);
-                }
-                else
-                {
-                    e.preventDefault();
-                }
-            }
-        });
     },
     
     renderQuestion: function(url){ //Renderar ut frågorna
-        Quiz.tries = 0;
+        Quiz.tries = 1;
         var XHR  = new XMLHttpRequest();
         var Questionfromserver = document.getElementById("question");
         var userInput = document.getElementById("svar");
@@ -48,7 +28,7 @@ var Quiz ={
         userInput.value ="";
         
         XHR.onreadystatechange = function(){
-            if(XHR.readystate === 4 && XHR.status === 200)
+            if(XHR.readyState === 4 && XHR.status === 200)
             {
                 Quiz.serverObject = JSON.parse(XHR.responseText);
                 Questionfromserver.innerHTML = Quiz.serverObject.question;
@@ -64,10 +44,10 @@ var Quiz ={
         var XHRTwo = new XMLHttpRequest();
         var i;
         
-        var status = document.getElementById("Questions");
+        var status = document.getElementById("question");
         
         XHRTwo.onreadystatechange = function(){
-            if(XHRTwo.readystate === 4)
+            if(XHRTwo.readyState === 4)
             {
                 var Serverresponse = JSON.parse(XHRTwo.responseText);
                 if (Serverresponse.message === "Correct answer!"
@@ -103,7 +83,8 @@ var Quiz ={
                 }
             }
         };
-        var sendanAnswer = JSON.stringify("svar").value = "";
+        var Json = {answer: answer};
+        var sendanAnswer = JSON.stringify(Json);
         XHRTwo.open("POST",url,true);
         XHRTwo.setRequestHeader("Content-type","application/json");
         XHRTwo.send(sendanAnswer);
