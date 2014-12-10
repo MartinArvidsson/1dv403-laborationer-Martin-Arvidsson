@@ -1,13 +1,18 @@
 "use strict";
 
 var Quiz ={
+    
+    questionArray:[],
     tries: 0,
-    array:[],
     serverObject: null,
+    
+    
+    
     init:function(){
-        var userInput = document.getElementById("Svar");
+        var userInput = document.getElementById("svar");
         Quiz.renderQuestion("http://vhost3.lnu.se:20080/question/1");
-        document.getElementById("Button").addEventListener("click", function(e){
+        document.getElementById("Button").addEventListener("click", function(e){ //Trycker på knappen funkion
+            
             if(userInput.value !== "")
             {
                 Quiz.answerQuestion(userInput.value, Quiz.serverObject.nextURL);
@@ -18,7 +23,8 @@ var Quiz ={
             }
         });
         
-    userInput.addEventListener("keydown",function(e) {
+    userInput.addEventListener("keydown",function(e) { //Trycker enter funktion
+            
             if(e.keycode === 13)
             {
                 if(userInput.value !== "")
@@ -33,11 +39,12 @@ var Quiz ={
         });
     },
     
-    renderQuestion: function(url){
+    renderQuestion: function(url){ //Renderar ut frågorna
         Quiz.tries = 0;
-        var Questionfromserver = document.getElementById("question");
         var XHR  = new XMLHttpRequest();
-        var userInput = document.getElementById("Svar");
+        var Questionfromserver = document.getElementById("question");
+        var userInput = document.getElementById("svar");
+        
         userInput.value ="";
         
         XHR.onreadystatechange = function(){
@@ -47,10 +54,13 @@ var Quiz ={
                 Questionfromserver.innerHTML = Quiz.serverObject.question;
             }
         };
+        
         XHR.open("GET",url, true);
         XHR.send(null);
     },
+    
     answerQuestion: function(answer, url){
+        
         var XHRTwo = new XMLHttpRequest();
         var i;
         
@@ -60,26 +70,27 @@ var Quiz ={
             if(XHRTwo.readystate === 4)
             {
                 var Serverresponse = JSON.parse(XHRTwo.responseText);
-                if (Serverresponse.message === "Correct answer!")
+                if (Serverresponse.message === "Correct answer!"
+                )
                 {
                     if(Serverresponse.nextURL !== undefined)
                     {
-                        Quiz.array.push(Quiz.tries);
+                        Quiz.questionArray.push(Quiz.tries);
                         Quiz.renderQuestion(Serverresponse.nextURL);
-                        status.innerHTML ="Rätt svar!!"
+                        status.innerHTML ="Rätt svar, bra jobbat";
                     }
                     else
                     {
-                        Quiz.array.push(Quiz.tries)
-                        status.innerHTML ="Grattis!, Resultat:"
+                        Quiz.questionArray.push(Quiz.tries);
+                        status.innerHTML ="Grattis!, Resultat:";
                         document.getElementById("Button").disabled = true;
-                        document.getElementById("Svar").value ="";
-                        document.getElementById("Svar").disabled = true;
+                        document.getElementById("svar").value ="";
+                        document.getElementById("svar").disabled = true;
                         
-                        for (i = 1; i < Quiz.array.length + 1; i +=1)
+                        for (i = 1; i < Quiz.questionArray.length + 1; i +=1)
                         {
                             var questionTag = document.createElement("p");
-                            questionTag.innerHTML = "fråga"+i+": "+Quiz.array[i-1]+"försök";
+                            questionTag.innerHTML = "fråga"+i+": "+Quiz.questionArray[i-1]+"försök";
                             status.appendChild(questionTag);
                         }
                     }
@@ -87,11 +98,15 @@ var Quiz ={
                 else
                 {
                     Quiz.tries +=1;
-                    document.getElementById("Svar").value = "";
-                    status.innerHTML = "fel svar, försök igen"
+                    document.getElementById("svar").value = "";
+                    status.innerHTML = "fel svar, försök igen";
                 }
             }
-        }
-    }
-}
+        };
+        var sendanAnswer = JSON.stringify("svar").value = "";
+        XHRTwo.open("POST",url,true);
+        XHRTwo.setRequestHeader("Content-type","application/json");
+        XHRTwo.send(sendanAnswer);
+    },
+};
 window.onload = Quiz.init;
