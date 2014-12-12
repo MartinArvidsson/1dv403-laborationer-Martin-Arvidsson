@@ -9,6 +9,7 @@ var Quiz ={
     
     init:function(){
         var userInput = document.getElementById("svar");
+        document.getElementById("repeatQuestion").value ="";
         Quiz.renderQuestion("http://vhost3.lnu.se:20080/question/1");
         document.getElementById("Button").addEventListener("click", function(e){ //Trycker på knappen funkion
             e.preventDefault();
@@ -24,7 +25,7 @@ var Quiz ={
         var XHR  = new XMLHttpRequest();
         var Questionfromserver = document.getElementById("question");
         var userInput = document.getElementById("svar");
-        
+        document.getElementById("repeatQuestion").value ="";
         userInput.value ="";
         
         XHR.onreadystatechange = function(){
@@ -40,24 +41,23 @@ var Quiz ={
     },
     
     answerQuestion: function(answer, url){
-        
+        var questionrepeat  = document.getElementById("repeatQuestion");
         var XHRTwo = new XMLHttpRequest();
         var i;
-        
         var status = document.getElementById("question");
         
         XHRTwo.onreadystatechange = function(){
             if(XHRTwo.readyState === 4)
             {
                 var Serverresponse = JSON.parse(XHRTwo.responseText);
-                if (Serverresponse.message === "Correct answer!"
-                )
+                if (Serverresponse.message === "Correct answer!")
                 {
                     if(Serverresponse.nextURL !== undefined)
                     {
                         Quiz.questionArray.push(Quiz.tries);
                         Quiz.renderQuestion(Serverresponse.nextURL);
-                        status.innerHTML ="Rätt svar, bra jobbat";
+                        //status.innerHTML ="Rätt svar, bra jobbat";
+                        questionrepeat.innerHTML ="";
                     }
                     else
                     {
@@ -79,7 +79,8 @@ var Quiz ={
                 {
                     Quiz.tries +=1;
                     document.getElementById("svar").value = "";
-                    status.innerHTML = "fel svar, försök igen";
+                    //status.innerHTML = "fel svar, försök igen";
+                    questionrepeat.innerHTML="fel svar, försök igen";
                 }
             }
         };

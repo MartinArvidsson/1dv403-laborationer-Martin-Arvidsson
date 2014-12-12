@@ -1,0 +1,24 @@
+html{
+    background:Darkgreen;
+}
+header{
+    font-family:verdana;
+    text-align:center;
+    font-weight:lighter;
+    font-size:50px;
+}
+#Questions{
+    font-family:verdana;
+    text-align:center;
+    font-weight:lighter;
+    font-size:20px;
+}
+form{
+    padding-left:45%;
+    
+}
+input
+{
+    font-family:verdana;
+    font-weight:bold;
+}
