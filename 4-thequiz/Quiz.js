@@ -63,6 +63,7 @@ var Quiz ={
                     {
                         Quiz.questionArray.push(Quiz.tries);
                         status.innerHTML ="Grattis!, Resultat:";
+                        questionrepeat.innerHTML="";
                         document.getElementById("Button").disabled = true;
                         document.getElementById("svar").value ="";
                         document.getElementById("svar").disabled = true;
@@ -85,7 +86,11 @@ var Quiz ={
             }
         };
         var Json = {answer: answer};
+        
+        //{answer: "10 "}
         var sendanAnswer = JSON.stringify(Json);
+        // '{"answer":"10"}'
+        
         XHRTwo.open("POST",url,true);
         XHRTwo.setRequestHeader("Content-type","application/json");
         XHRTwo.send(sendanAnswer);
