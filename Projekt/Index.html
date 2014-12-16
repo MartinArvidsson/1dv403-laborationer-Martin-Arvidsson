@@ -4,18 +4,21 @@
         <Title>Mitt projekt</Title>
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="Style.css" />
+        <script type="text/javascript" src="Desktop.js"></script>
+        <script type="text/javascript" src="Startmenu.js"></script>
+        <script type="text/javascript" src="Window.js"></script>
+        <script type="text/javascript" src="Script.js"></script>
     </head>
-    
-    <body>
-      <div id="Window">
-          
-      </div>
-      
-      <div id=AnotherWindow>
-          
-      </div>
-      <div id = Startmenu>
-          
-      </div>
-    </body>
+        <body>
+          <div class="desktop">
+              <template id="template">
+                      <div class="window">
+                      <div class="headline"><div class="titel">en text</div><img class="close" src="pics/exit.png"></img></div>
+                      <div class="box"></div>
+                      <div class="underline"><div class="titelnr2">mer text!</div></div>
+                  </div>
+              </template>
+              <div class="taskbar"></div>
+          </div>
+        </body>
 </html>
