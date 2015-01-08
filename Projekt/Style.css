@@ -3,36 +3,40 @@ width:auto;
 height:auto;
 margin:0;
 padding:0;
-}
-.desktop{
 background-image:url("Pics/Backgroundpic.jpg");
 }
-/* Här kommer desigen för ett fönster / Template för window m.m */
+.desktop{ /*Själva skrivbordet */
+width:auto;
+height:auto;
+}
+/* Här kommer desigen för ett fönster / Template för window m.m */ /*Templatet är hur fönstet som genereras upp kommer att se ut designmässigt*/
 .template{
     
 }
-.headline{
+.headline{ /*Rubriken på fönstret*/
     
 }
-.titel{
+.titel{ 
     
 }
-.close{
+.close{ /*Stänga knappen*/
     
 }
-.window{
+.window{ /*Själva fönstret*/
     
 }
-.box{
+.box{ /*Innehållet*/
     
 }
-.underline{
+.underline{ 
     
 }
 .titelnr2{
     
 }
 /* Slut på fönster*/
-.taskbar{
-    
+.taskbar{ /*Startmenyn / Dockan / Där knapparna kommer att finnas */
+width:auto;
+height:50px;
+background-color:grey;
 }
