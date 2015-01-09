@@ -6,15 +6,22 @@ padding:0;
 background-image:url("Pics/Backgroundpic.jpg");
 }
 .desktop{ /*Själva skrivbordet */
+/*width:1520px;
+height:750px;*/
 width:auto;
 height:auto;
+background-color:blue;
+/*margin-top:80px;
+margin-left:75px;
+border:solid 5px black;
+border-radius:7px;*/
 }
 /* Här kommer desigen för ett fönster / Template för window m.m */ /*Templatet är hur fönstet som genereras upp kommer att se ut designmässigt*/
 .template{
     
 }
 .headline{ /*Rubriken på fönstret*/
-    
+    color:#FFF2E0;
 }
 .titel{ 
     
@@ -23,20 +30,27 @@ height:auto;
     
 }
 .window{ /*Själva fönstret*/
-    
+border:8px;
+border-radius:4px;
+border-color:rgba(0,0,0,0.8);
+background:#FFF2E0;
+width:200px;
+height:90px;
 }
 .box{ /*Innehållet*/
     
 }
-.underline{ 
-    
+.underline{ /* stil */
+    color:#FFF2E0;
 }
-.titelnr2{
+.titelnr2{ /* Textbit/icon laddar */
     
 }
 /* Slut på fönster*/
 .taskbar{ /*Startmenyn / Dockan / Där knapparna kommer att finnas */
-width:auto;
+width: 100%;
 height:50px;
-background-color:grey;
+background:rgba(0,0,0,0.5);
+position:absolute; 
+bottom:0px;
 }
